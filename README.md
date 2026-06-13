@@ -44,26 +44,32 @@ all coordinated over a **TCP client/server** protocol.
 | **Domain model** | `railway.rkt`, `train.rkt`, `switch.rkt`, `signal.rkt`, `crossing.rkt` | Railway topology and component ADTs |
 | **Support** | `util.rkt`, `scenario.txt` | Utilities and an example scenario |
 
-## Hardware library dependency
+## Provided dependencies (not included)
 
-This project drives real hardware through a **course-provided Z21/DCC hardware
-abstraction library** (`hardware-library/interface.rkt`). That library is **not
-included in this repository** — it is third-party / course-provided code that is
-not mine to redistribute.
+This project runs on top of **two modules provided by the course (VUB)**, neither
+of which is mine to redistribute, so **both are excluded from this repository**:
 
-`infrabel-core.rkt` imports it as:
+- **`simulator/`** — the VUB-provided railway **simulator** (software backend).
+- **`hardware-library/`** — the VUB-provided **Z21/DCC hardware** abstraction
+  library (real-hardware backend).
+
+`infrabel-core.rkt` imports both:
 
 ```racket
-(prefix-in hw: "hardware-library/interface.rkt")
+(prefix-in sim: "simulator/interface.rkt")        ; VUB-provided simulator
+(prefix-in hw:  "hardware-library/interface.rkt") ; VUB-provided Z21/DCC library
 ```
 
-To run against the simulator or real hardware, place the provided
-`hardware-library/` folder at the repository root so that path resolves.
+The code I wrote sits *on top* of these: it can drive either backend
+(`'simulator` or `'hardware`) through one abstraction. To run it, place the
+course-provided `simulator/` and `hardware-library/` folders at the repository
+root so those paths resolve.
 
 ## Running it
 
 ```bash
-# 1. Place the provided hardware-library/ folder at the repo root (see above).
+# 1. Place the provided simulator/ and hardware-library/ folders at the repo
+#    root (see "Provided dependencies" above).
 # 2. Start the Infrabel backend (TCP server):
 racket infrabel-server.rkt
 # 3. In another terminal, start the NMBS cockpit/client:
@@ -82,5 +88,5 @@ The TCP port and host are configurable (see `tcp-protocol.rkt`,
 
 ## License
 
-MIT (my own code only) — see [LICENSE](LICENSE). The provided hardware library
-is not covered and is not redistributed here.
+MIT (my own code only) — see [LICENSE](LICENSE). The VUB-provided `simulator/`
+and `hardware-library/` modules are not covered and are not redistributed here.

@@ -10,10 +10,10 @@ compiled/
 __MACOSX/
 Thumbs.db
 
-# Provided hardware abstraction library — NOT redistributable.
-# See README ("Hardware library dependency"). Place it here locally to run
-# against real Z21/DCC hardware.
-hardware-library/
+# VUB-provided modules — NOT redistributable. See README ("Provided
+# dependencies"). Place these here locally to run the project.
+simulator/         # VUB-provided railway simulator backend
+hardware-library/  # VUB-provided Z21/DCC hardware abstraction library
 
 # Helper brief for me, not part of the published project
 README_BRIEF_for_Claude_Desktop.md

@@ -23,6 +23,7 @@ SOFTWARE.
 ---
 
 NOTE: This license covers only the source code authored by Abdullah Tahir in
-this repository. It does NOT cover the course-provided hardware abstraction
-library (the Z21/DCC interface), which is not included here and remains the
-property of its original authors.
+this repository. It does NOT cover the course-provided (VUB) modules that this
+project depends on — the railway simulator (`simulator/`) and the Z21/DCC
+hardware abstraction library (`hardware-library/`) — which are not included here
+and remain the property of their original authors.
