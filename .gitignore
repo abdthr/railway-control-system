@@ -1,0 +1,19 @@
+# Racket compiled output
+compiled/
+*.zo
+*.dep
+
+# Editor backups / junk
+*.rkt~
+*~
+.DS_Store
+__MACOSX/
+Thumbs.db
+
+# Provided hardware abstraction library — NOT redistributable.
+# See README ("Hardware library dependency"). Place it here locally to run
+# against real Z21/DCC hardware.
+hardware-library/
+
+# Helper brief for me, not part of the published project
+README_BRIEF_for_Claude_Desktop.md
