@@ -1,0 +1,15 @@
+#lang racket
+(require racket/class "protocols.rkt" "util.rkt")
+(provide crossing%)
+(define crossing%
+  (class* object% (Crossing<%>)
+    (init-field id [state 'open])
+    (super-new)
+    (ensure-symbol 'crossing% id)
+    (unless (member state '(open closed))
+      (error 'crossing% "state must be 'open or 'closed"))
+    (field [st state])
+    (define/public (get-id) id)
+    (define/public (get-state) st)
+    (define/public (open!)  (set! st 'open))
+    (define/public (close!) (set! st 'closed))))

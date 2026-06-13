@@ -1,0 +1,15 @@
+#lang racket
+(require racket/class "protocols.rkt" "util.rkt")
+(provide switch%)
+(define switch%
+  (class* object% (Switch<%>)
+    (init-field id [position 1])
+    (super-new)
+    (ensure-symbol 'switch% id)
+    (unless (member position '(1 2)) (error 'switch% "position must be 1 or 2"))
+    (field [pos position])
+    (define/public (get-id) id)
+    (define/public (get-position) pos)
+    (define/public (set-position p)
+      (unless (member p '(1 2)) (error 'set-position "position must be 1 or 2"))
+      (set! pos p))))
